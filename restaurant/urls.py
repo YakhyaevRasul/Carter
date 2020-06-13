@@ -7,5 +7,5 @@ router.register('restaurants', RestaurantModelViewSet)
 router.register('food', FoodModelViewSet)
 urlpatterns = [
     path('', include(router.urls)),
-    path('recipe/<int:pk>/', RestaurantFoodAPIView.as_view()),
+    path('recipe/', RestaurantFoodAPIView.as_view()),
 ]
