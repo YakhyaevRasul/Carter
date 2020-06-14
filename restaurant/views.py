@@ -36,6 +36,17 @@ class RestaurantFoodAPIView(ListAPIView):
     permission_classes = [AllowAny, ]
     serializer_class = RestaurantFoodSerializer
 
+class RestaurantFoodRetrieveAPIView(RetrieveAPIView):
+    queryset = Restaurant.objects.all()
+    permission_classes = [AllowAny, ]
+    serializer_class = RestaurantFoodSerializer
+
+    def get(self, request, *args, **kwargs):
+        res = self.get_object()
+        serialized = RestaurantFoodSerializer(res)
+
+        return Response(serialized.data)
+
 
 class FoodModelViewSet(ModelViewSet):
     queryset = Food.objects.all()
